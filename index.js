@@ -145,7 +145,7 @@ const products = [
         des: " ",
         image: "hal.jpg",
         weights: ["تورتا","مارشميللو","كاو بوي","نيو كراميلو","بيمبو","ترافل","رولانا","تيبو","لارش","كتاكيتو"],
-        prices: [50,50,50,50,50,60,60,60,60,60  ],
+        prices: [20,20,20,20,20,25,25,25,30,30],
         category: "الفريسكا"
     },
           {
@@ -600,6 +600,9 @@ function updateCart() {
 
     cartTotal.textContent = `${total} جنيه`;
     cartCount.textContent = cart.length;
+    // حفظ السلة في المتصفح
+localStorage.setItem('cart', JSON.stringify(cart));
+
 }
 
 // ------- باقي الدوال (فتح السلة، إرسال الطلب...) -------
@@ -664,7 +667,10 @@ function submitForm(event) {
 
     closeModal();
     cart = [];
+    localStorage.removeItem('cart'); // إزالة السلة من المتصفح
+
     updateCart();
+    
     alert("تم إرسال طلبك بنجاح! سنتصل بك قريباً لتأكيد التفاصيل.");
 }
 
@@ -714,6 +720,13 @@ offers.forEach(product => {
 // ------- تشغيل عند تحميل الصفحة -------
 window.onload = function () {
     displayCategoriesGrid();
+    // استرجاع السلة لو موجودة
+const savedCart = localStorage.getItem('cart');
+if (savedCart) {
+    cart = JSON.parse(savedCart);
+    updateCart();
+}
+
     const overlay = document.getElementById('cart-overlay');
     if (overlay) overlay.addEventListener('click', toggleCart);
 
@@ -755,3 +768,109 @@ window.onload = function () {
         });
     }
 };
+// قائمة الصوصات الإضافية
+const extraSauces = [
+    { name: "نوتيلا", price: 10 },
+    { name: "كراميل", price: 10 },
+    { name: "لوتس", price: 15 },
+    { name: "كيندر", price: 20 },
+    { name: "بستاشيو", price: 30 }
+];
+
+// تعديل عرض المنتجات عند وجود فريسكا حلو (Extra)
+function displayFilteredProducts(filteredProducts) {
+    const productsDiv = document.getElementById("products");
+    productsDiv.innerHTML = "";
+
+    if (!filteredProducts || filteredProducts.length === 0) {
+        productsDiv.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <p>لا توجد نتائج مطابقة للبحث</p>
+            </div>
+        `;
+        return;
+    }
+
+    filteredProducts.forEach(product => {
+        const hasWeights = Array.isArray(product.weights) && Array.isArray(product.prices);
+        let weightsHTML = "";
+        if (hasWeights) {
+            weightsHTML = product.weights.map((weight, index) =>
+                `<option value="${index}">${weight} - ${product.prices[index]} جنيه</option>`
+            ).join('');
+        }
+        const priceFallback = product.newPrice ?? product.oldPrice ?? product.price ?? 0;
+
+        let sauceHTML = "";
+        if (product.name.includes("حلو (Extra)")) {
+            sauceHTML = `
+                <label>اختر صوص إضافي:</label>
+                <select id="sauce-${product.id}">
+                    <option value="">بدون صوص</option>
+                    ${extraSauces.map((s, i) => `<option value="${i}">${s.name}-${s.price} جنيه</option>`).join('')}
+                </select>
+            `;
+        }
+
+        const selectHTML = hasWeights
+            ? `<select id="weight-${product.id}">${weightsHTML}</select>`
+            : `<div class="single-price">${priceFallback} جنيه</div>`;
+
+        const onclickFn = hasWeights || product.name.includes("حلو (Extra)")
+            ? `addSweetExtraToCart(${product.id}, this)` 
+            : `addOfferToCart(${product.id}, this)`;
+
+        productsDiv.innerHTML += `
+            <div class="product-card">
+                <img src="${product.image}" class="product-img" alt="${product.name}">
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    ${product.des ? `<p class="product-des">${product.des}</p>` : ""}
+                    ${selectHTML}
+                    ${sauceHTML}
+                    <button onclick="${onclickFn}">
+                        <i class="fas fa-cart-plus"></i> أضف للسلة
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// دالة إضافة الفريسكا الحلو (Extra) مع الصوص
+function addSweetExtraToCart(productId, btn = null) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    let weight = "حجم واحد";
+    let idx = 0;
+    if (product.weights) {
+        const sel = document.getElementById(`weight-${product.id}`);
+        idx = sel ? parseInt(sel.value) : 0;
+        weight = product.weights[idx] ?? "حجم واحد";
+    }
+
+    let price = product.prices[idx] ?? product.newPrice ?? product.oldPrice ?? 0;
+
+    // الصوص الإضافي
+    const sauceSel = document.getElementById(`sauce-${product.id}`);
+    let sauceText = "";
+    if (sauceSel && sauceSel.value !== "") {
+        const sauce = extraSauces[sauceSel.value];
+        price += sauce.price;
+        sauceText = ` + ${sauce.name}`;
+    }
+
+    cart.push({ id: product.id, name: product.name, weight: weight + sauceText, price });
+    updateCart();
+
+    if (btn) {
+        btn.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+        btn.style.backgroundColor = '#4CAF50';
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-cart-plus"></i> أضف للسلة';
+            btn.style.backgroundColor = '';
+        }, 1500);
+    }
+}
