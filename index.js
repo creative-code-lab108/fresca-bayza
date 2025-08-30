@@ -8,7 +8,7 @@ const products = [
     {
     id: 23,
     name: "عيب علينا",
-    des: " ",
+    des: " فريسكا حادق + فريسكا نوتيلا + وافل نوتيلا",
     image: "ab.jpg",
     oldPrice: 170,   // السعر القديم
     newPrice: 120,   // السعر الجديد
@@ -18,7 +18,7 @@ const products = [
     {
     id: 24,
     name: "الشقاوة",
-    des: " ",
+    des: "فريسكا تركي لانشون + فريسكا لوتس + نص وافل نوتيلا + موهيتو ليمون نعناع ",
     image: "sha.jpg",
     oldPrice: 175,   // السعر القديم
     newPrice: 125,   // السعر الجديد
@@ -28,7 +28,7 @@ const products = [
     {
     id: 25,
     name: "البوظان",
-    des: " ",
+    des: " فريسكا فانتزيا و فريسكا تركي لانشون و 25 قطعة بان كيك و الشديدة",
     image: "bau.jpg",
     oldPrice: 270,   // السعر القديم
     newPrice: 220,   // السعر الجديد
@@ -38,7 +38,7 @@ const products = [
     {
     id: 26,
     name: "السوبر هاتريك",
-    des: " ",
+    des: " 4 فريسكا (وايت و نوتيلا و لوتس و كيندر)",
     image: "su.jpg",
     oldPrice: 145,   // السعر القديم
     newPrice: 100,   // السعر الجديد
@@ -48,7 +48,7 @@ const products = [
     {
     id: 27,
     name: "عرض الصيف",
-    des: " ",
+    des: " وافل ايس كريم و 3 فريسكا (وايت و نوتيلا و لوتس) و 25 قطعة بان كيك",
     image: "se.jpg",
     oldPrice: 315,   // السعر القديم
     newPrice: 250,   // السعر الجديد
@@ -58,7 +58,7 @@ const products = [
     {
     id: 28,
     name: "الفوقان ",
-    des: " ",
+    des: " فريسكا و وافل بكريمة القهوة و ايس كوفي",
     image: "fa.jpg",
     oldPrice: 225,   // السعر القديم
     newPrice: 180,   // السعر الجديد
@@ -68,7 +68,7 @@ const products = [
     {
     id: 29,
     name: "اللمة ",
-    des: " ",
+    des: "2 فريسكا تركي لانشون / بسطرمة و 25 قطعة بان كيك و 2 فريسكا فانتزيا و 2 وافل ملظلظ",
     image: "la.jpg",
     oldPrice: 550,   // السعر القديم
     newPrice: 450,   // السعر الجديد
@@ -78,7 +78,7 @@ const products = [
     {
     id: 30,
     name: "الروقان ",
-    des: " ",
+    des: " فريسكا نوتيلا + ميلك شيك لوتس",
     image: "ra.jpg",
     oldPrice: 130,   // السعر القديم
     newPrice: 90,   // السعر الجديد
@@ -88,7 +88,7 @@ const products = [
     {
     id: 31,
     name: "الروقان 2 ",
-    des: " ",
+    des: "موهيتو + الشديدة ",
     image: "ra2.jpg",
     oldPrice: 150,   // السعر القديم
     newPrice: 100,   // السعر الجديد
@@ -98,7 +98,7 @@ const products = [
     {
     id: 32,
     name: "عرض البيرفيتو",
-    des: " ",
+    des: " 25 قطعة بان كيك و 3 فريسكا (وايت و نوتيلا و لوتس)",
     image: "ber.jpg",
     oldPrice: 210,   // السعر القديم
     newPrice: 160,   // السعر الجديد
@@ -337,10 +337,9 @@ const products = [
         des: "طعم الانتعاش",
         image: "moji.jpg",
         weights: ["ليمون نعناع ","بلوبيري","فراولة","بطيخ", "باشون فروت", "كيوي","كيوي ليمون","اناناس","اناناس ليمون","بينا كولادا","فلوريدا (بطيخ - نعناع - ليمون)"],
-        prices: [30,40,40,40, 45, 45,50,45,50,45],
+        prices: [30,40,40,40, 45, 45,50,45,50,50,45],
         category: "المشروبات"
     },
-
 
 
 
@@ -660,21 +659,23 @@ function showOffers(el = null) {
         return;
     }
 
-    offers.forEach(product => {
-        offersGrid.innerHTML += `
-          <div class="offer-card">
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <div class="prices">
-              <span class="old-price">${product.oldPrice ?? ''} جنيه</span>
-              <span class="new-price">${product.newPrice ?? ''} جنيه</span>
-            </div>
-            <button onclick="addOfferToCart(${product.id}, this)" class="offer-btn">
-              <i class="fas fa-cart-plus"></i> أضف للسلة
-            </button>
-          </div>
-        `;
-    });
+offers.forEach(product => {
+    offersGrid.innerHTML += `
+      <div class="offer-card">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        ${product.des ? `<p class="offer-des">${product.des}</p>` : ""}
+        <div class="prices">
+          <span class="old-price">${product.oldPrice ?? ''} جنيه</span>
+          <span class="new-price">${product.newPrice ?? ''} جنيه</span>
+        </div>
+        <button onclick="addOfferToCart(${product.id}, this)" class="offer-btn">
+          <i class="fas fa-cart-plus"></i> أضف للسلة
+        </button>
+      </div>
+    `;
+});
+
 
     // لو عندك دالة للكاونت داون خلّيها تشتغل، وإلا تجاهل
     if (typeof startCountdown === 'function') startCountdown("Aug 31, 2025 23:59:59");
@@ -725,5 +726,4 @@ window.onload = function () {
             });
         });
     }
-
 };
