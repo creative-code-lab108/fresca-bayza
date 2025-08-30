@@ -480,23 +480,19 @@ function displayCategoriesGrid() {
 // ------- البحث -------
 // ------- البحث ------- 
 function liveSearch() {
-    let searchTerm = document.getElementById('searchInput').value.trim();
+    let searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
     if (searchTerm === "") {
-        // لو مفيش كتابة نعرض كل المنتجات ما عدا العروض
         const withoutOffers = products.filter(p => !p.isOffer);
         displayProducts(withoutOffers);
         return;
     }
 
-    // نحذف المسافات عشان البحث يكون مرن
-    searchTerm = searchTerm.replace(/\s+/g, "");
-
     const filteredProducts = products.filter(product => {
-        if (product.isOffer) return false; // ✅ استبعاد العروض من البحث
+        if (product.isOffer) return false; // استبعاد العروض
 
-        const name = (product.name || "").replace(/\s+/g, "");
-        const category = (product.category || "").replace(/\s+/g, "");
-        const des = (product.des || "").replace(/\s+/g, "");
+        const name = (product.name || "").toLowerCase();
+        const category = (product.category || "").toLowerCase();
+        const des = (product.des || "").toLowerCase();
 
         return (
             name.includes(searchTerm) ||
@@ -507,6 +503,7 @@ function liveSearch() {
 
     displayFilteredProducts(filteredProducts);
 }
+
 
 function clearSearch() {
     document.getElementById('searchInput').value = '';
