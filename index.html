@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>فريسكا بايظة </title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="ffff.png">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="index.css" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #451f81; /* أو خلي اللي يناسبك */
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    header.body {
+      text-align: center;
+      padding: 30px 16px;
+    }
+    header.body img { max-width: 200px; height: auto; display:block; margin: 0 auto 12px; }
+    header.body h1 { color:#ff7802; font-size: 2.6rem; margin-bottom:6px; text-shadow: 1px 1px 6px rgba(0,0,0,0.25); }
+    header.body p { margin-bottom: 14px; opacity: .95; }
+
+    .btn {
+      display: inline-block;
+      background:#ff7802;
+      color:#fff;
+      padding:12px 26px;
+      border-radius:28px;
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transform: background 1s;
+    }
+    .btn:hover {
+background: #451f81;
+transition: 1s;
+    }
+
+    /* ===== Swiper responsive styles ===== */
+    .swiper {
+      width: 100%;
+      max-width: 1200px;
+      margin: 32px auto;
+      padding: 10px 12px;
+    }
+
+    /* كل شريحة نحدد لها نسبة عرض/ارتفاع (portrait feel) */
+    .swiper-slide {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: #111;
+      /* عرض / ارتفاع: كل شريحة تحدد ارتفاع تلقائياً حسب العرض */
+      aspect-ratio: 3 / 4; /* width : height => portrait (ارتفاع أكبر) */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* الصورة تملأ الشريحة ونتأكد من القص بدون تشويه */
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-text {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    /* أزرار ونقاط افتراضي */
+    .swiper-button-next, .swiper-button-prev { color: #fff; }
+    .swiper-pagination-bullet { background: #fff; opacity: .9; }
+
+    /* لضمان أن المساحة حول السلايدر متناسبة على الشاشات الصغيرة */
+    @media (max-width: 900px) {
+      header.body h1 { font-size: 2rem; }
+      .swiper { padding: 6px; }
+    }
+    @media (max-width: 480px) {
+      header.body h1 { font-size: 1.6rem; }
+      .slide-text { font-size: .95rem; padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="body">
+    <img src="فريسكا بايظة لوجو - Copy.png" alt="فريسكا بايظة - لوجو">
+    <h1>فريسكا بايظة</h1>
+    <p>اسمها ملهوش علاقة بطعمها</p>
+    <a class="btn" href="head.html">أطلب الان</a>
+  </header>
+
+  <!-- ===== Swiper (3 / 2 / 1 responsive) ===== -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <!-- استبدل مسارات الصور بالصور الخاصة بك -->
+      <div class="swiper-slide">
+        <img src="baz.jpg" alt="فريسكا لذيذة">
+        <div class="slide-text">الوافل عندنا حلو و حادق</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="moji.jpg" alt="مشروبات">
+        <div class="slide-text">مشروبات منعشة🧊</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="baz2.jpg" alt="وافل وويفر">
+        <div class="slide-text">أحلي وافل ممكن تجربه</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="fa.jpg" alt="صورة 4">
+        <div class="slide-text">عرض الفوقان في حتة تانية </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="se.jpg" alt="صورة 5">
+        <div class="slide-text">تشكيلة الصيف </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="mee.jpg" alt="صورة 5">
+        <div class="slide-text">تشكيلة الفريسكا في حتة تانية </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="heee.jpg" alt="صورة 5">
+        <div class="slide-text">اسال عن العروض</div>
+      </div>
+      <div class="swiper-slide">
+        <img src="bann.jpg" alt="صورة 5">
+        <div class="slide-text">تشكيلة البان كيك اختراع </div>
+      </div>
+    </div>
+
+    <!-- أدوات التحكم -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="head.html">منتجاتنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>اتصل بنا</h4>
+                <ul>
+                    <li>
+  <i class="fas fa-phone"></i>
+  <a href="tel:+2010 08973583">01008973583</a>
+</li>
+                    <!-- <li><i class="fas fa-envelope"></i> info@nutsstore.com</li> -->
+                    <li><i class="fab fa-whatsapp"></i><a href="https://api.whatsapp.com/send?phone=201108585906&text&context=Affo2dAlESAJpmEngsTD8Dbhc3UDq55919ZqUnIu60-cijgDTPxY27U-uBcV82xyGkAIQ6VHfX64cciOlhupfvZf8LLIuZMevDB9u3FofuSfwLPNYZRutcf-Xi8Lxvyh8z-oFncAg8DHZGBScQ&source&app=facebook" target="_blank">01108585906</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>تابعنا</h4>
+                <div class="social-links">
+                    <a class="fac" href="https://www.facebook.com/p/%D9%81%D8%B1%D9%8A%D8%B3%D9%83%D8%A7-%D8%A8%D8%A7%D9%8A%D8%B8%D8%A9-61557397905390/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="in" href="https://www.instagram.com/fresca_bayza/?hl=ar" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="ti" href="https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40fresca_6&h=AT1U1JueA8yYjBZ2XLICbhxgzVzDbJwRo6rnPWXlh06X0Ql6kH-rGIp6G9R1y7jOHR4hXMgUcx9m3eG6z9zD9mqgKvcHP7gvDdv_30q_bazH0GFA6oLMTl9gJoGn5wSH4ZEWwjvBO9kwpo9seFvb" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    <a class="wa" href="https://api.whatsapp.com/send?phone=201108585906&text&context=Affo2dAlESAJpmEngsTD8Dbhc3UDq55919ZqUnIu60-cijgDTPxY27U-uBcV82xyGkAIQ6VHfX64cciOlhupfvZf8LLIuZMevDB9u3FofuSfwLPNYZRutcf-Xi8Lxvyh8z-oFncAg8DHZGBScQ&source&app=facebook" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center;">
+
+    <!-- الخريطة 1 -->
+    <div style="flex: 1 1 300px;">
+      <h4>الفرع - المندرة ش حسني أمام الغزالي للعطور الاسكندرية </h4>
+      <br>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d213.1228037943699!2d30.011101134238096!3d31.27706718677649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5d1fec6ad13b5%3A0xbda2c4cf477fe2da!2z2YHYsdmK2LPZg9inINio2KfZiti42Kk!5e0!3m2!1sar!2seg!4v1755787365483!5m2!1sar!2seg"
+        width="50%" height="200" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+  </div>
+
+
+  <div style="margin-top: 20px; font-size: 0.9em; text-align: center;" class="footer-section">
+    <p>© 2025 جميع الحقوق محفوظة - <strong>فريسكا بايظة</strong></p>
+    <p>تم الإنشاء بواسطة شركة <strong><a href="https://www.facebook.com/profile.php?id=61563758474952&locale=ar_AR" target="_blank" >Creative Code Lab</a></strong></p>
+  </div>
+  <br>
+    </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      spaceBetween: 18,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      // مهم علشان يتأقلم لو DOM أو حجم الآباء تغير
+      observer: true,
+      observeParents: true,
+      watchOverflow: true,
+      breakpoints: {
+        0:   { slidesPerView: 1, spaceBetween: 10 },
+        600: { slidesPerView: 2, spaceBetween: 14 },
+        992: { slidesPerView: 3, spaceBetween: 18 }
+      }
+    });
+
+    // تحديث عند تغيير الاتجاه أو إعادة الحجم (احتياط)
+    window.addEventListener('resize', function(){ swiper.update(); });
+  </script>
+</body>
+</html>
+
+

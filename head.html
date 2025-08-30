@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>فريسكا بايظة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="ffff.png">
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="site-header" >
+        <div class="container">
+            <div class="logo-container">
+                <img src="copy.png" alt="شعار متجر المكسرات" class="logo">
+                <div class="logo-text">
+                    <h1> فريسكا بايظة </h1>
+                    <p class="slogan">اسمها ملهوش علاقة بطعمها</p>
+                </div>
+            </div>
+            <div class="header-contact">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span ><a  class="num" href="tel:+2010 08973583">01108585906</a></span>
+                    <i class="fas fa-clock"></i>
+                    <span>يومياً من 04:00م إلى 12:00م</span>
+                </div>
+
+            </div>
+        </div>
+    </header>
+<hr>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- Hamburger Button -->
+        <button class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars" id="menuIcon"></i>
+        </button>
+        
+        <!-- Navigation Links -->
+<ul class="nav-links" id="navLinks">
+  <li><a href="#" onclick="filterProducts('الكل', this)">الرئيسية</a></li>
+<li><a href="#" onclick="filterProducts('كل المنتجات', this)">كل المنتجات</a></li>
+<li><a href="#" onclick="showOffers(this)">العروض</a></li>
+  <li><a href="#" onclick="filterProducts('الفريسكا', this)">الفريسكا</a></li>
+  <li><a href="#" onclick="filterProducts('الوافل', this)">الوافل</a></li>
+  <li><a href="#" onclick="filterProducts('بان كيك', this)">بان كيك</a></li>
+  <li><a href="#" onclick="filterProducts('المشروبات', this)">المشروبات</a></li>
+</ul>
+
+
+
+        
+        <!-- Cart Icon
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>-->
+    </div> 
+</nav>
+<!-- أضف هذا داخل الـ navbar أو في مكان مناسب -->
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن منتجات..." oninput="liveSearch()">
+    <i class="fas fa-search"></i>
+</div>
+
+
+        <!-- Floating Cart Button -->
+    <div class="floating-cart" onclick="toggleCart()">
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h2 class="section-title">الأصناف</h2>
+            <div  id="products">
+                <!-- سيتم تعبئتها بالجافاسكريبت -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-basket"></i> سلة التسوق</h3>
+            <button class="close-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-body">
+            <ul class="cart-items" id="cart-items"></ul>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cart-total">0</span> جنيه
+            </div>
+            <button class="checkout-btn" onclick="sendOrder()">
+                <i class="fab fa-whatsapp"></i> إتمام الطلب
+            </button>
+        </div>
+    </div>
+
+    <!-- Customer Modal -->
+    <div class="modal" id="customer-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-user-edit"></i> أكمل بياناتك</h2>
+            <form id="customer-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> الاسم بالكامل:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-mobile-alt"></i> رقم الهاتف:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address"><i class="fas fa-map-marker-alt"></i> العنوان:</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="notes"><i class="fas fa-sticky-note"></i> ملاحظات:</label>
+                    <textarea id="notes" rows="2"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> تأكيد الطلب
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="head.html">منتجاتنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>اتصل بنا</h4>
+                <ul>
+                    <li>
+  <i class="fas fa-phone"></i>
+  <a href="tel:+2010 08973583">01008973583</a>
+</li>
+                    <!-- <li><i class="fas fa-envelope"></i> info@nutsstore.com</li> -->
+                    <li><i class="fab fa-whatsapp"></i><a href="https://api.whatsapp.com/send?phone=201108585906&text&context=Affo2dAlESAJpmEngsTD8Dbhc3UDq55919ZqUnIu60-cijgDTPxY27U-uBcV82xyGkAIQ6VHfX64cciOlhupfvZf8LLIuZMevDB9u3FofuSfwLPNYZRutcf-Xi8Lxvyh8z-oFncAg8DHZGBScQ&source&app=facebook" target="_blank">01108585906</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>تابعنا</h4>
+                <div class="social-links">
+                    <a class="fac" href="https://www.facebook.com/p/%D9%81%D8%B1%D9%8A%D8%B3%D9%83%D8%A7-%D8%A8%D8%A7%D9%8A%D8%B8%D8%A9-61557397905390/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="in" href="https://www.instagram.com/fresca_bayza/?hl=ar" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="ti" href="https://l.facebook.com/l.php?u=https%3A%2F%2Ftiktok.com%2F%40fresca_6&h=AT1U1JueA8yYjBZ2XLICbhxgzVzDbJwRo6rnPWXlh06X0Ql6kH-rGIp6G9R1y7jOHR4hXMgUcx9m3eG6z9zD9mqgKvcHP7gvDdv_30q_bazH0GFA6oLMTl9gJoGn5wSH4ZEWwjvBO9kwpo9seFvb" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    <a class="wa" href="https://api.whatsapp.com/send?phone=201108585906&text&context=Affo2dAlESAJpmEngsTD8Dbhc3UDq55919ZqUnIu60-cijgDTPxY27U-uBcV82xyGkAIQ6VHfX64cciOlhupfvZf8LLIuZMevDB9u3FofuSfwLPNYZRutcf-Xi8Lxvyh8z-oFncAg8DHZGBScQ&source&app=facebook" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; text-align: center;">
+
+    <!-- الخريطة 1 -->
+    <div style="flex: 1 1 300px;">
+      <h4>الفرع - المندرة ش حسني أمام الغزالي للعطور الاسكندرية </h4>
+      <br>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d213.1228037943699!2d30.011101134238096!3d31.27706718677649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5d1fec6ad13b5%3A0xbda2c4cf477fe2da!2z2YHYsdmK2LPZg9inINio2KfZiti42Kk!5e0!3m2!1sar!2seg!4v1755787365483!5m2!1sar!2seg"
+        width="50%" height="200" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+  </div>
+
+
+  <div style="margin-top: 20px; font-size: 0.9em; text-align: center;" class="footer-section">
+    <p>© 2025 جميع الحقوق محفوظة - <strong>فريسكا بايظة</strong></p>
+    <p>تم الإنشاء بواسطة شركة <strong><a href="https://www.facebook.com/profile.php?id=61563758474952&locale=ar_AR" target="_blank" >Creative Code Lab</a></strong></p>
+  </div>
+  <br>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
