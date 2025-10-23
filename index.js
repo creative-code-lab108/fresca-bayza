@@ -10,8 +10,8 @@ const products = [
     name: "عيب علينا",
     des: " فريسكا حادق + فريسكا نوتيلا + وافل نوتيلا",
     image: "ab.jpg",
-    oldPrice: 170,   // السعر القديم
-    newPrice: 120,   // السعر الجديد
+    oldPrice: 180,   // السعر القديم
+    newPrice: 140,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -20,18 +20,18 @@ const products = [
     name: "الشقاوة",
     des: "فريسكا تركي لانشون + فريسكا لوتس + نص وافل نوتيلا + موهيتو ليمون نعناع ",
     image: "sha.jpg",
-    oldPrice: 175,   // السعر القديم
-    newPrice: 125,   // السعر الجديد
+    oldPrice: 185,   // السعر القديم
+    newPrice: 135,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
     {
     id: 25,
-    name: "البوظان",
+    name: "الكومبو",
     des: " فريسكا فانتزيا و فريسكا تركي لانشون و 25 قطعة بان كيك و الشديدة",
     image: "bau.jpg",
-    oldPrice: 270,   // السعر القديم
-    newPrice: 220,   // السعر الجديد
+    oldPrice: 350,   // السعر القديم
+    newPrice: 280,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -40,8 +40,8 @@ const products = [
     name: "السوبر هاتريك",
     des: " 4 فريسكا (وايت و نوتيلا و لوتس و كيندر)",
     image: "su.jpg",
-    oldPrice: 145,   // السعر القديم
-    newPrice: 100,   // السعر الجديد
+    oldPrice: 165,   // السعر القديم
+    newPrice: 120,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -50,8 +50,8 @@ const products = [
     name: "عرض الصيف",
     des: " وافل ايس كريم و 3 فريسكا (وايت و نوتيلا و لوتس) و 25 قطعة بان كيك",
     image: "se.jpg",
-    oldPrice: 315,   // السعر القديم
-    newPrice: 250,   // السعر الجديد
+    oldPrice: 400,   // السعر القديم
+    newPrice: 300,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -60,8 +60,8 @@ const products = [
     name: "الفوقان ",
     des: " فريسكا و وافل بكريمة القهوة و ايس كوفي",
     image: "fa.jpg",
-    oldPrice: 225,   // السعر القديم
-    newPrice: 180,   // السعر الجديد
+    oldPrice: 260,   // السعر القديم
+    newPrice: 220,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -70,28 +70,28 @@ const products = [
     name: "اللمة ",
     des: "2 فريسكا تركي لانشون / بسطرمة و 25 قطعة بان كيك و 2 فريسكا فانتزيا و 2 وافل ملظلظ",
     image: "la.jpg",
-    oldPrice: 550,   // السعر القديم
-    newPrice: 450,   // السعر الجديد
+    oldPrice: 655,   // السعر القديم
+    newPrice: 500,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
     {
     id: 30,
-    name: "الروقان ",
+    name: "الرايق ",
     des: " فريسكا نوتيلا + ميلك شيك لوتس",
     image: "ra.jpg",
     oldPrice: 130,   // السعر القديم
-    newPrice: 90,   // السعر الجديد
+    newPrice: 100,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
     {
     id: 31,
-    name: "الروقان 2 ",
+    name: "الروقان  ",
     des: "موهيتو + الشديدة ",
     image: "ra2.jpg",
     oldPrice: 150,   // السعر القديم
-    newPrice: 100,   // السعر الجديد
+    newPrice: 120,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -100,8 +100,8 @@ const products = [
     name: "عرض البيرفيتو",
     des: " 25 قطعة بان كيك و 3 فريسكا (وايت و نوتيلا و لوتس)",
     image: "ber.jpg",
-    oldPrice: 210,   // السعر القديم
-    newPrice: 160,   // السعر الجديد
+    oldPrice: 290,   // السعر القديم
+    newPrice: 200,   // السعر الجديد
     category: "عروض",
     isOffer: true   // علشان يظهر في صفحة العروض
 },
@@ -881,6 +881,7 @@ function addSweetExtraToCart(productId, btn = null) {
         }, 1500);
     }
 }
+
 
 
 
